@@ -21,22 +21,22 @@ fn main() {
     println!("------------------------------");
     println!("Starting with {seed_number}");
 
-    calculate_next_number(seed_number);
+    calculate_next_number(seed_number, 1);
 
     io::stdin().read_line(&mut String::new()).unwrap();
 }
 
-fn calculate_next_number(current_number: u32) {
+fn calculate_next_number(current_number: u32, count: u32) {
     println!("{current_number}");
 
     if current_number == 1 {
-        println!("Reached 1. Ending.");
+        println!("Reached 1 after {count} cycles.");
         return;
     }
     if is_odd(current_number) {
-        calculate_next_number(current_number * 3 + 1)
+        calculate_next_number(current_number * 3 + 1, count + 1)
     } else {
-        calculate_next_number(current_number / 2);
+        calculate_next_number(current_number / 2, count + 1);
     }
 }
 
